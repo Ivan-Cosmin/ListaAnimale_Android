@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tema.R
+import com.example.tema.data.repositories.AnimalRepository
 import com.example.tema.helpers.extensions.logErrorMessage
 import com.example.tema.models.AnimalModel
 
@@ -29,6 +30,8 @@ class AnimalListAdapter(
         val animalModel = items[position]
         (holder as AnimalViewHolder).bind(animalModel)
 
+        holder.itemView.findViewById<Button>(R.id.btn_delete_animal).setOnClickListener { doDeleteAnimal(holder.itemView, position) }
+
         "onBindViewHolder; position = $position".logErrorMessage("ProductListAdapter")
     }
 
@@ -43,6 +46,7 @@ class AnimalListAdapter(
 
         fun bind(animal: AnimalModel) {
             animalNameTextView.text = animal.name
+            animalContinentTextView.text = animal.continent
         }
     }
 
@@ -54,5 +58,7 @@ class AnimalListAdapter(
         notifyDataSetChanged()
     }
 
+    private fun doDeleteAnimal(view: View, position: Int) {
+    }
 
 }
