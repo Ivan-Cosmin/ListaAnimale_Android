@@ -4,4 +4,7 @@
     <string name="region">Region</string>
     <string name="animal_name">Animal Name</string>
     <string name="animal_description">Animal Description</string>
+    <string name="add_animal">Add animal</string>
+    <string name="name_of_an_animal">Name of an Animal...</string>
+    <string name="continent">Continent...</string>
 </resources>
