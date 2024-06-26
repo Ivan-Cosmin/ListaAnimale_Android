@@ -59,6 +59,21 @@ class AnimalListAdapter(
     }
 
     private fun doDeleteAnimal(view: View, position: Int) {
+        val name = view.findViewById<TextView>(R.id.tv_animal_name)?.text.toString()
+
+        AnimalRepository.getAnimalByName(name) { animal ->
+            if (animal != null) {
+
+                AnimalRepository.deleteAnimal(animal) {
+                    items.removeAt(position)
+                    notifyItemRemoved(position)
+
+                    for (i in position until items.size) {
+                        notifyItemChanged(i)
+                    }
+                }
+            }
+        }
     }
 
 }
